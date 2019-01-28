@@ -1,9 +1,14 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
-  const users_service_type = sequelize.define('users_service_type', {
-    id_users: DataTypes.INTEGER,
-    id_services_type: DataTypes.INTEGER
-  }, {});
+  const users_service_type = sequelize.define(
+    "users_service_type",
+    {
+      id_users: DataTypes.INTEGER,
+      id_services_type: DataTypes.INTEGER,
+      price: DataTypes.DOUBLE
+    },
+    {}
+  );
   users_service_type.associate = function(models) {
     // associations can be defined here
   };
