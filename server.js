@@ -16,6 +16,7 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 
 app.use("/api/servicetype", require("./routes/servicetype"));
+app.use("/api/payment_type", require("./routes/payment_type"));
 
 // models.sequelize.sync().then(function() {
 app.listen(PORT, () => console.log(`Open localhost:${PORT}`));

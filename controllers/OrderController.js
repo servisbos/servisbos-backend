@@ -7,10 +7,6 @@ exports.getServicesType = async (req, res) => {
 };
 
 exports.createServiceType = async (req, res) => {
-    //   const SALT_WORK_FACTOR = 12;
-    //   const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
-
-    //   req.body.password = await bcrypt.hash(req.body.password, salt);
 
     services_type.create(req.body).then(services_type => {
         res.send("Success Yeah!!");
