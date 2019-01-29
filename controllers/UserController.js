@@ -1,6 +1,6 @@
-const User = require("../models").User;
-// const bcrypt = require("bcryptjs");
-// const jwt = require("jsonwebtoken");
+const User = require("../models").user;
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 exports.getUsers = async (req, res) => {
   const users = await User.findAll();
@@ -9,10 +9,10 @@ exports.getUsers = async (req, res) => {
 };
 
 exports.createUser = async (req, res) => {
-  //   const SALT_WORK_FACTOR = 12;
-  //   const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
+  const SALT_WORK_FACTOR = 12;
+  const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
 
-  //   req.body.password = await bcrypt.hash(req.body.password, salt);
+  req.body.password = await bcrypt.hash(req.body.password, salt);
 
   User.create(req.body).then(user => {
     res.send("Success Yeah!!");
