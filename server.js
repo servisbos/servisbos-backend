@@ -15,6 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 
+app.use("/api/servicetype", require("./routes/servicetype"));
+
 // models.sequelize.sync().then(function() {
 app.listen(PORT, () => console.log(`Open localhost:${PORT}`));
 // })
