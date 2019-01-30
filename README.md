@@ -1,3 +1,3 @@
-# RDBMS (Relational Database Management System)
+# ERD (Entity Relationship Diagram)
 
 ![teks alt gambar](RDBMSservisbos.png)
