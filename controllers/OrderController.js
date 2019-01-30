@@ -1,40 +1,40 @@
-const services_type = require("../models").services_type;
+const order = require("../models").order;
 
-exports.getServicesType = async (req, res) => {
-    const servicetype = await services_type.findAll();
+exports.getOrder = async (req, res) => {
+    const orders = await order.findAll();
 
-    res.json({ servicetype });
+    res.json({ orders });
 };
 
-exports.createServiceType = async (req, res) => {
+exports.createOrder = async (req, res) => {
 
-    services_type.create(req.body).then(services_type => {
+    order.create(req.body).then(order => {
         res.send("Success Yeah!!");
     });
 };
 
-exports.getServiceTypeById = async (req, res) => {
-    const servicetype = await services_type.findById(req.params.id);
+exports.getOrderById = async (req, res) => {
+    const orders = await order.findById(req.params.id);
 
-    res.json({ servicetype });
+    res.json({ orders });
 };
 
-exports.updateServiceTypeById = async (req, res) => {
-    const [isUpdated] = await services_type.update(req.body, {
+exports.updateOrderById = async (req, res) => {
+    const [isUpdated] = await order.update(req.body, {
         where: { id: req.params.id }
     });
 
     if (Boolean(isUpdated)) {
-        const servicetype = await services_type.findById(req.params.id);
+        const orders = await order.findById(req.params.id);
 
-        res.json({ servicetype });
+        res.json({ orders });
     } else {
         res.json({});
     }
 };
 
-exports.deleteServiceTypeById = async (req, res) => {
-    await ServiceType.destroy({ where: { id: req.params.id } });
+exports.deleteOrderById = async (req, res) => {
+    await Order.destroy({ where: { id: req.params.id } });
 
     res.json({});
 };
