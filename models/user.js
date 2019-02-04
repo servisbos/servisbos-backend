@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       phone_number: DataTypes.STRING,
       email: { type: DataTypes.STRING, allowNull: false },
       password: { type: DataTypes.STRING, allowNull: false },
-      user_type: DataTypes.ENUM("1", "2", "3")
+      user_type: DataTypes.ENUM("1", "2", "3"),
+      image: DataTypes.STRING
     },
     {}
   );
