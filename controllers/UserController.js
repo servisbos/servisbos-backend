@@ -27,17 +27,24 @@ exports.getUserById = async (req, res) => {
 
 exports.updateUserById = async (req, res) => {
   const [isUpdated] = await User.update(req.body, {
-    where: { id: req.params.id }
-  });
+    where: { id: req.params.id }})
 
-  if (Boolean(isUpdated)) {
-    const user = await User.findById(req.params.id);
 
-    res.json({ user });
-  } else {
-    res.json({});
-  }
+if (Boolean(isUpdated)) {
+  const user = await User.findById(req.params.id);
+
+  res.json({ user });
+} else {
+  res.json({});
+}
 };
+
+exports.filterUserByServicesType = async (req, res) => {
+  const [isFilter] = await User.find(req.body, {
+    where: { services_type: req.query.services_type }
+  });
+  return isFilter
+}
 
 exports.deleteUserById = async (req, res) => {
   await User.destroy({ where: { id: req.params.id } });

@@ -14,6 +14,10 @@ router
   .patch(UserController.updateUserById)
   .delete(UserController.deleteUserById);
 
+router
+  .route("/:services_type")
+  .get(UserController.filterUserByServicesType)
+
 router.post("/login", UserController.login);
 
 module.exports = router;
