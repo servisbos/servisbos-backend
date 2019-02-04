@@ -15,7 +15,7 @@ router
   .delete(UserController.deleteUserById);
 
 router
-  .route("/:services_type")
+  .route("/:usersbyservice")
   .get(UserController.filterUserByServicesType)
 
 router.post("/login", UserController.login);
