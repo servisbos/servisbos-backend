@@ -1,7 +1,7 @@
 const services_type = require("../models").services_type;
 
 exports.getServicesType = async (req, res) => {
-  const servicetype = await services_type.findAll();
+  const servicetype = await services_type.findAll().catch(err => res.send(err));
 
   res.json({ servicetype });
 };
