@@ -14,4 +14,6 @@ router
   .patch(UserServiceTypeController.updateUserServiceTypeById)
   .delete(UserServiceTypeController.deleteUserServiceTypeById);
 
+router.route("/findProvider/:id_services_type")
+.get(UserServiceTypeController.getUserServiceTypeByIdServiceType)
 module.exports = router;

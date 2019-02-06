@@ -29,7 +29,7 @@ fs.readdirSync(__dirname)
   .forEach(file => {
     const model = sequelize["import"](path.join(__dirname, file));
     db[model.name] = model;
-    db[model.name].sync({ alter: true });
+    // db[model.name].sync({ alter: true });
   });
 
 Object.keys(db).forEach(modelName => {

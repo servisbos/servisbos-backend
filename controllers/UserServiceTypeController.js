@@ -18,6 +18,11 @@ exports.getUserServiceTypeById = async (req, res) => {
 
     res.json({ userservicetype });
 };
+exports.getUserServiceTypeByIdServiceType = async (req, res) => {
+    const userservicetype = await users_service_type.findAll({where:{id_services_type:req.params.id_services_type}});
+
+    res.json({ userservicetype });
+};
 
 exports.updateUserServiceTypeById = async (req, res) => {
     const [isUpdated] = await users_service_type.update(req.body, {

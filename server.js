@@ -4,10 +4,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const PORT = process.env.PORT || 8000;
+const cors = require('cors')
 
 const app = express();
 const models = require("./models/");
 
+app.use(cors());
 app.use(logger("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
