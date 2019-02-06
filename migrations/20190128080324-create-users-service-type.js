@@ -8,12 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_users: {
-        type: Sequelize.INTEGER
-      },
-      id_services_type: {
-        type: Sequelize.INTEGER
-      },
       price: {
         type: Sequelize.DOUBLE
       },
@@ -24,10 +18,26 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      id_users: {
+        type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
+        allowNull: false,
+        references: {
+          model: "users",
+          key: "id"
+        }
+      },
+      id_services_type: {
+        type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
+        allowNull: false,
+        references: {
+          model: "services_types",
+          key: "id"
+        }
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("users_service_types");
-  }
+  down: (queryInterface, Sequelize) => {}
 };

@@ -8,9 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_order: {
-        type: Sequelize.STRING
-      },
       address: {
         type: Sequelize.STRING
       },
@@ -23,7 +20,10 @@ module.exports = {
       postal_code: {
         type: Sequelize.DOUBLE
       },
-
+      order_date: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
       status: {
         type: Sequelize.STRING
       },
@@ -35,10 +35,17 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      id_order: {
+        type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
+        allowNull: false,
+        references: {
+          model: "orders",
+          key: "id"
+        }
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("order_details");
-  }
+  down: (queryInterface, Sequelize) => {}
 };

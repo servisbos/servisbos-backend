@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   services_type.associate = function(models) {
-    // associations can be defined here
+    models.services_type.hasMany(models.users_service_type, {
+      foreignKey: "id_services_type",
+      sourceKey: "id"
+    });
   };
   return services_type;
 };

@@ -1,4 +1,5 @@
 const User = require("../models").user;
+const UserServiceType = require("../models").users_service_type;
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -20,31 +21,34 @@ exports.createUser = async (req, res) => {
 };
 
 exports.getUserById = async (req, res) => {
-  const user = await User.findById(req.params.id);
+  const user = await User.findAll({
+    where: { id: req.params.id },
+    include: [UserServiceType]
+  });
 
   res.json({ user });
 };
 
 exports.updateUserById = async (req, res) => {
   const [isUpdated] = await User.update(req.body, {
-    where: { id: req.params.id }})
+    where: { id: req.params.id }
+  });
 
+  if (Boolean(isUpdated)) {
+    const user = await User.findById(req.params.id);
 
-if (Boolean(isUpdated)) {
-  const user = await User.findById(req.params.id);
-
-  res.json({ user });
-} else {
-  res.json({});
-}
+    res.json({ user });
+  } else {
+    res.json({});
+  }
 };
 
 exports.filterUserByServicesType = async (req, res) => {
   const [isFilter] = await User.find(req.body, {
     where: { services_type: req.query.services_type }
   });
-  return isFilter
-}
+  return isFilter;
+};
 
 exports.deleteUserById = async (req, res) => {
   await User.destroy({ where: { id: req.params.id } });
