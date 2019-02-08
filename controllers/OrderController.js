@@ -11,7 +11,8 @@ exports.createOrder = async (req, res) => {
 try{
     order.create(req.body).then(order => {
     console.log(order);
-    res.status(200).json({ message: "Success." });    });
+    res.status(200).json({ message: "Success." });    
+});
 }catch(err){
     res.status(500).json({ message: "There is an error.", err });
 
@@ -51,9 +52,9 @@ exports.updateOrderById = async (req, res) => {
     if (Boolean(isUpdated)) {
         const orders = await order.findById(req.params.id);
 
-        res.json({ orders });
+        res.status(200).json({ message: "Success." });
     } else {
-        res.json({});
+res.status(500).json({ message: "There is an error.", err });
     }
 };
 

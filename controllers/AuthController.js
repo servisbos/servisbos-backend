@@ -40,6 +40,7 @@ console.log(User.id)
     res.status(200).json({
       message: "You're logged in",
       id: User.id,
+      dataUser: User,
       token
     });
   } catch (err) {
