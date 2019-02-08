@@ -36,10 +36,10 @@ exports.signIn = async (req, res) => {
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
-
+console.log(User.id)
     res.status(200).json({
       message: "You're logged in",
-      id: user.id,
+      id: User.id,
       token
     });
   } catch (err) {

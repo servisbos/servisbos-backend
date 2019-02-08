@@ -1,10 +1,26 @@
 const User = require("../models").user;
 const UserServiceType = require("../models").users_service_type;
+const ServiceType = require("../models").services_type;
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 exports.getUsers = async (req, res) => {
   const users = await User.findAll();
+
+  res.json({ users });
+};
+
+exports.getDataProvider = async (req, res) => {
+  const users = await User.findAll({
+    where: { id: req.params.id_provider},
+    include: [{
+      model: UserServiceType, 
+      include: [
+        ServiceType
+      ]  
+    }]
+  });
+
 
   res.json({ users });
 };

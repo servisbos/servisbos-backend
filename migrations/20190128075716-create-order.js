@@ -12,10 +12,26 @@ module.exports = {
         type: Sequelize.STRING
       },
       status: {
-        type: Sequelize.ENUM("PENDING", "ACCEPTED", "FINISHED")
+        type: Sequelize.ENUM("PENDING", "ACCEPTED", "FINISHED","REVIEWED")
       },
       payment_type: {
         type: Sequelize.ENUM("CASH", "DEBIT")
+      },
+      order_date: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      address: {
+        type: Sequelize.STRING
+      },
+      city: {
+        type: Sequelize.STRING
+      },
+      province: {
+        type: Sequelize.STRING
+      },
+      postal_code: {
+        type: Sequelize.DOUBLE
       },
       createdAt: {
         allowNull: false,
@@ -42,10 +58,18 @@ module.exports = {
           model: "users",
           key: "id"
         }
+      },
+      id_services_type: {
+        type: Sequelize.INTEGER,
+        onDelete: "CASCADE",
+        allowNull: false,
+        references: {
+          model: "services_types",
+          key: "id"
+        }
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("orders");
   }
 };

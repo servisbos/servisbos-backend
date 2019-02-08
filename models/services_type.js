@@ -12,6 +12,11 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "id_services_type",
       sourceKey: "id"
     });
+    models.services_type.hasMany(models.order, {
+      foreignKey: "id_services_type",
+      sourceKey: "id"
+    });
   };
+
   return services_type;
 };

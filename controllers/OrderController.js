@@ -9,6 +9,7 @@ exports.getOrder = async (req, res) => {
 exports.createOrder = async (req, res) => {
 
     order.create(req.body).then(order => {
+        console.log(order);
         res.send("Success Yeah!!");
     });
 };

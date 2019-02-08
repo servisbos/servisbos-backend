@@ -18,6 +18,10 @@ router
   .route("/:usersbyservice")
   .get(UserController.filterUserByServicesType)
 
+  router
+  .route("/getDataProvider/:id_provider")
+  .get(UserController.getDataProvider)
+
 router.post("/login", UserController.login);
 
 module.exports = router;

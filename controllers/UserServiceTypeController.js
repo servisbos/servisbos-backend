@@ -29,9 +29,30 @@ exports.getUserServiceTypeByIdServiceType = async (req, res) => {
   res.json({ userservicetype });
 };
 
+exports.getUserServiceTypeBySpecialization = async (req, res) => {
+  if(req.query){
+    let condition = {};
+
+    Object.keys(req.query).forEach(key=>
+      Object.assign(condition,{
+        [key]:{$like: `%${req.query[key]}%` }
+      })
+   );
+    users_service_type.findAll({where:{...condition }})
+      .then(datas => res.status(200).json({ datas }))
+      .catch(err => res.status(500).json(err));
+  }else{
+    users_service_type.findAll()
+      .then(datas => res.status(200).json({ datas }))
+      .catch(err => res.status(500).json(err));
+  }
+}
+
+
 exports.updateUserServiceTypeById = async (req, res) => {
   const [isUpdated] = await users_service_type.update(req.body, {
-    where: { id: req.params.id }
+    where: { id: req.params.id },
+
   });
 
   if (Boolean(isUpdated)) {

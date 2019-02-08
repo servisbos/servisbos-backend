@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "id_provider",
       targetKey: "id"
     });
+
   };
   return order;
 };
