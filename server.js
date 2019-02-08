@@ -22,7 +22,6 @@ app.use("/api/payment_type", require("./routes/payment_type"));
 app.use("/api/review_services", require("./routes/review_services"));
 app.use("/api/user_service_type", require("./routes/userservicetype"));
 app.use("/api/order", require("./routes/order"));
-app.use("/api/order_detail", require("./routes/order_detail"));
 
 // models.sequelize.sync().then(function() {
 app.listen(PORT, () => console.log(`Open localhost:${PORT}`));

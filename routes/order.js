@@ -13,5 +13,9 @@ router
     .get(OrderController.getOrderById)
     .patch(OrderController.updateOrderById)
     .delete(OrderController.deleteOrderById);
+router
+    .route("/provider/:id")
+    .get(OrderController.getOrderByIdProvider)
+
 
 module.exports = router;
